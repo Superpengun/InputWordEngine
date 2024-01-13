@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello world" />
+
+    <Button
+        android:id="@+id/bt_getsuggest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="getsuggest" />
+
+    <Button
+        android:id="@+id/bt_getassociate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="getassociate" />
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name" />
+
+    <com.superpenguin.foreigninputandoutput.method.InputView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/input"/>
+
+
+</LinearLayout>
