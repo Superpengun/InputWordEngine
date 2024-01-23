@@ -1,4 +1,4 @@
-# InputWordEngine(For Android inputmethod)
+# InputWordEngine(安卓输入法引擎For Android inputmethod)
 输入单词引擎是一个专为安卓设备提供英文及其他外文语种的输入预测和根据单词补全功能的模块
 InputWordEngine is a moudle for Android devices that provides intelligent input prediction and word completion features for English and other foreign languages.<br>
 #### 更多交流加QQ：3323181861 ，C++代码并不在此对外列出
