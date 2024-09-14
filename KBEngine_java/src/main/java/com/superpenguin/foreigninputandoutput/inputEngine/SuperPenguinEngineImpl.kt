@@ -52,6 +52,7 @@ class SuperPenguinEngineImpl : DictionaryInitializationListener {
         DictionaryFacilitatorProvider.getDictionaryFacilitator(false /* isNeededForSpellChecking */)
     private val mInputLogic = InputLogicReplace(this, mDictionaryFacilitator)
     private var mRichImm: RichInputMethodManager? = null
+    private var isInit = false
 
     @UsedForTesting
     val mPenguinLanguageSwitcher: PenguinLanguageSwitcher = PenguinLanguageSwitcher.instance
@@ -82,7 +83,7 @@ class SuperPenguinEngineImpl : DictionaryInitializationListener {
         }
     }
 
-    fun onCreate(context: Context?) {
+    fun onCreate(context: Context?, lan: String) {
         this.context = context
         Settings.init(this.context)
         DebugFlags.init(PreferenceManager.getDefaultSharedPreferences(this.context))
@@ -107,8 +108,9 @@ class SuperPenguinEngineImpl : DictionaryInitializationListener {
             mInputScope = CoroutineScope(singleInputScope!!)
         }
         currentScope.launch {
-            onStartInput()
+            onStartInput(lan)
         }
+        isInit = true
     }
 
     // Has to be package-visible for unit tests
@@ -138,8 +140,21 @@ class SuperPenguinEngineImpl : DictionaryInitializationListener {
         mainKeyboardView?.setMainDictionaryAvailability(isMainDictionaryAvailable)
     }
 
-    private fun resetDictionaryFacilitatorIfNecessary() {
-        val subtypeSwitcherLocale = Locale.ENGLISH
+    fun resetLanguage(lan: String){
+        if (isInit){
+            resetDictionaryFacilitatorIfNecessary(lan)
+        }
+    }
+
+    private fun resetDictionaryFacilitatorIfNecessary(lan: String) {
+        val subtypeSwitcherLocale = when(lan) {
+            "de" ->Locale.GERMAN
+            "fr" ->Locale.FRENCH
+            "ru" ->Locale("ru")
+            "es" ->Locale("es")
+            "en_uk" ->Locale("en_uk")
+            else ->Locale.ENGLISH
+        }
         val subtypeLocale: Locale = subtypeSwitcherLocale
         if (mDictionaryFacilitator.isForLocale(subtypeLocale) && mDictionaryFacilitator.isForAccount(
                 mSettings.current.mAccount
@@ -182,6 +197,7 @@ class SuperPenguinEngineImpl : DictionaryInitializationListener {
         }
         mDictionaryFacilitator.closeDictionaries()
         mSettings.onDestroy()
+        isInit = false
     }
 
     @UsedForTesting
@@ -189,7 +205,7 @@ class SuperPenguinEngineImpl : DictionaryInitializationListener {
         mInputLogic.recycle()
     }
 
-    private fun onStartInput() {
+    private fun onStartInput(lan: String) {
         mDictionaryFacilitator.onStartInput()
         // Switch to the null consumer to handle cases leading to early exit below, for which we
         // also wouldn't be consuming gesture data.
@@ -224,11 +240,11 @@ class SuperPenguinEngineImpl : DictionaryInitializationListener {
         // We also tell the input logic about the combining rules for the current subtype, so
         // it can adjust its combiners if needed.
         mInputLogic.startInput(mRichImm!!.combiningRulesExtraValueOfCurrentSubtype)
-        resetDictionaryFacilitatorIfNecessary()
+        resetDictionaryFacilitatorIfNecessary(lan)
 
-        if (isDifferentTextField || !currentSettingsValues.hasSameOrientation(context!!.resources.configuration)) {
-            loadSettings()
-        }
+//        if (isDifferentTextField || !currentSettingsValues.hasSameOrientation(context!!.resources.configuration)) {
+//            loadSettings()
+//        }
         if (isDifferentTextField) {
             mainKeyboardView.closing()
             currentSettingsValues = mSettings.current

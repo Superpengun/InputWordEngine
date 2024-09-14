@@ -19,3 +19,17 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep native methods
+-keepclassmembers class * {
+    native <methods>;
+}
+
+# Keep classes that are used as a parameter type of methods that are also marked as keep
+# to preserve changing those methods' signature.
+-keep class com.superpenguin.foreigninputandoutput.method.AssetFileAddress
+-keep class com.superpenguin.foreigninputandoutput.method.Dictionary
+-keep class com.superpenguin.foreigninputandoutput.method.NgramContext
+-keep class com.superpenguin.foreigninputandoutput.method.makedict.ProbabilityInfo
+-keep class com.superpenguin.foreigninputandoutput.method.personalization.UserHistoryDictionary{*;}
+-keep class com.superpenguin.foreigninputandoutput.method.UserBinaryDictionary{*;}

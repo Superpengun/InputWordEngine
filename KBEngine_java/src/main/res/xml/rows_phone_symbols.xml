@@ -41,7 +41,7 @@
             latin:keyLabelFlags="hasPopupHint"
             latin:keyStyle="numKeyStyle"
             latin:backgroundType="functional"
-            latin:keyWidth="fillRight" />
+            latin:ZQYkeyWidth="fillRight" />
     </Row>
     <Row>
         <Key
@@ -60,7 +60,7 @@
             latin:keySpec="."
             latin:keyStyle="numKeyStyle"
             latin:backgroundType="functional"
-            latin:keyWidth="fillRight" />
+            latin:ZQYkeyWidth="fillRight" />
     </Row>
     <Row>
         <!-- U+FF0A: "＊" FULLWIDTH ASTERISK -->
@@ -77,7 +77,7 @@
             latin:keyStyle="numSymbolKeyStyle" />
         <Key
             latin:keyStyle="deleteKeyStyle"
-            latin:keyWidth="fillRight" />
+            latin:ZQYkeyWidth="fillRight" />
     </Row>
     <Row>
         <Key
@@ -89,6 +89,6 @@
             latin:keyStyle="numSpaceKeyStyle" />
         <Key
             latin:keyStyle="enterKeyStyle"
-            latin:keyWidth="fillRight" />
+            latin:ZQYkeyWidth="fillRight" />
     </Row>
 </merge>

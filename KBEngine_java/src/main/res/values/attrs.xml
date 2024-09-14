@@ -250,9 +250,9 @@
              keyboard height. -->
         <attr name="rowHeight" format="dimension|fraction" />
         <!-- Default horizontal gap between keys, in the proportion of keyboard width. -->
-        <attr name="horizontalGap" format="fraction" />
+        <attr name="horizontalGap" format="dimension|fraction" />
         <!-- Default vertical gap between rows of keys, in the proportion of keyboard height. -->
-        <attr name="verticalGap" format="fraction" />
+        <attr name="verticalGap" format="dimension|fraction" />
         <!-- More keys keyboard layout template -->
         <attr name="moreKeysTemplate" format="reference" />
         <!-- Icon set for key top and key preview. These should be aligned with
@@ -377,7 +377,7 @@
              area up to the right edge of the keyboard. -->
         <!-- This should be aligned with
              {@link com.android.inputmethod.keyboard.internal.KeyboardRow#KEYWIDTH_FILL_RIGHT}. -->
-        <attr name="keyWidth" format="fraction|enum">
+        <attr name="ZQYkeyWidth" format="fraction|enum">
             <enum name="fillRight" value="-1" />
         </attr>
         <!-- The X-coordinate of upper right corner of this key including horizontal gap, in the

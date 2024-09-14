@@ -63,7 +63,7 @@ public final class KeyboardRow {
          */
         public RowAttributes(final TypedArray keyAttr, final float defaultKeyWidth,
                 final int keyboardWidth) {
-            mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+            mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_ZQYkeyWidth,
                     keyboardWidth, keyboardWidth, defaultKeyWidth);
             mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0);
             mDefaultBackgroundType = keyAttr.getInt(R.styleable.Keyboard_Key_backgroundType,
@@ -80,7 +80,7 @@ public final class KeyboardRow {
          */
         public RowAttributes(final TypedArray keyAttr, final RowAttributes defaultRowAttr,
                 final int keyboardWidth) {
-            mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+            mDefaultKeyWidth = keyAttr.getFraction(R.styleable.Keyboard_Key_ZQYkeyWidth,
                     keyboardWidth, keyboardWidth, defaultRowAttr.mDefaultKeyWidth);
             mDefaultKeyLabelFlags = keyAttr.getInt(R.styleable.Keyboard_Key_keyLabelFlags, 0)
                     | defaultRowAttr.mDefaultKeyLabelFlags;
@@ -172,7 +172,7 @@ public final class KeyboardRow {
             return getDefaultKeyWidth();
         }
         final int widthType = ResourceUtils.getEnumValue(keyAttr,
-                R.styleable.Keyboard_Key_keyWidth, KEYWIDTH_NOT_ENUM);
+                R.styleable.Keyboard_Key_ZQYkeyWidth, KEYWIDTH_NOT_ENUM);
         switch (widthType) {
         case KEYWIDTH_FILL_RIGHT:
             // If keyWidth is fillRight, the actual key width will be determined to fill
@@ -180,7 +180,7 @@ public final class KeyboardRow {
             final int keyboardRightEdge = mParams.mOccupiedWidth - mParams.mRightPadding;
             return keyboardRightEdge - keyXPos;
         default: // KEYWIDTH_NOT_ENUM
-            return keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+            return keyAttr.getFraction(R.styleable.Keyboard_Key_ZQYkeyWidth,
                     mParams.mBaseWidth, mParams.mBaseWidth, getDefaultKeyWidth());
         }
     }

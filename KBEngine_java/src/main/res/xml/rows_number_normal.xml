@@ -37,7 +37,7 @@
             latin:keyLabelFlags="hasPopupHint"
             latin:keyStyle="numKeyStyle"
             latin:backgroundType="functional"
-            latin:keyWidth="fillRight" />
+            latin:ZQYkeyWidth="fillRight" />
     </Row>
     <Row>
         <Key
@@ -57,7 +57,7 @@
                     latin:keySpec="."
                     latin:keyStyle="numKeyStyle"
                     latin:backgroundType="functional"
-                    latin:keyWidth="fillRight" />
+                    latin:ZQYkeyWidth="fillRight" />
             </case>
             <case
                 latin:mode="time|datetime"
@@ -68,14 +68,14 @@
                     latin:keyLabelFlags="hasPopupHint"
                     latin:keyStyle="numKeyStyle"
                     latin:backgroundType="functional"
-                    latin:keyWidth="fillRight" />
+                    latin:ZQYkeyWidth="fillRight" />
             </case>
             <default>
                 <Key
                     latin:keySpec=","
                     latin:keyStyle="numKeyStyle"
                     latin:backgroundType="functional"
-                    latin:keyWidth="fillRight" />
+                    latin:ZQYkeyWidth="fillRight" />
             </default>
         </switch>
     </Row>
@@ -91,7 +91,7 @@
             latin:keyStyle="numKeyStyle" />
         <Key
             latin:keyStyle="deleteKeyStyle"
-            latin:keyWidth="fillRight" />
+            latin:ZQYkeyWidth="fillRight" />
     </Row>
     <Row>
         <switch>
@@ -130,6 +130,6 @@
             latin:keyStyle="numSpaceKeyStyle" />
         <Key
             latin:keyStyle="enterKeyStyle"
-            latin:keyWidth="fillRight" />
+            latin:ZQYkeyWidth="fillRight" />
     </Row>
 </merge>

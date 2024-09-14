@@ -1,17 +1,18 @@
 package com.example.zqy_kb
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.widget.TextView
-import com.superpenguin.foreigninputandoutput.inputEngine.KeyboardEngine
+import androidx.appcompat.app.AppCompatActivity
 import com.example.zqy_kb.databinding.ActivityMainBinding
+import com.superpenguin.foreigninputandoutput.inputEngine.KeyboardEngine
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
+
 
 class MainActivityForLogic : AppCompatActivity() {
 
@@ -28,7 +29,7 @@ class MainActivityForLogic : AppCompatActivity() {
     }
 
     private fun bindClick() {
-        KeyboardEngine.init(applicationContext)
+        KeyboardEngine.init(applicationContext,"en")
         binding.button.setOnClickListener {
             runOnUiThread {
                 val text =
@@ -49,6 +50,16 @@ class MainActivityForLogic : AppCompatActivity() {
         binding.button4.setOnClickListener {
             stressAssociate()
         }
+        binding.button5.setOnClickListener {
+            runOnUiThread {
+                KeyboardEngine.switchLanguage(binding.editTextText.text.toString())
+            }
+        }
+        binding.button6.setOnClickListener {
+            runOnUiThread {
+                KeyboardEngine.switchLanguage("en")
+            }
+        }
     }
 
     private fun stressQuery() {
@@ -60,15 +71,19 @@ class MainActivityForLogic : AppCompatActivity() {
         if (num <= 1) {
             num = 1
         }
-        val words = listOf("playback", "whatfuck", "what", "it")
-
+        val inputText = binding.editTextText3.text.toString()
+        var items = inputText.split(",".toRegex()).dropLastWhile { it.isEmpty() }
+            .toTypedArray()
+        if (items.isEmpty()){
+            items = listOf("test").toTypedArray()
+        }
             for (i in 0 until num) {
                 scope.launch{
-                    val randomWord = words.random()
+                    val randomWord = items.random()
                     val result = KeyboardEngine.queryWord(randomWord)
                     // 处理结果，例如打印或进行其他操作
                     if (result.isNotEmpty()) {
-                        Log.d(TAG, "stressQuery: current is $i result is ${result[0]}")
+                        Log.d(TAG, "stressQuery: current is $i queryword is $randomWord result is ${result[0]}")
                     } else {
                         Log.d(TAG, "stressQuery: empty")
                     }

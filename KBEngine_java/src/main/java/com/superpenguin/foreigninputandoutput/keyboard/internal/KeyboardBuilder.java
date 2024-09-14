@@ -257,7 +257,7 @@ public class KeyboardBuilder<KP extends KeyboardParams> {
             final int baseWidth =
                     params.mOccupiedWidth - params.mLeftPadding - params.mRightPadding;
             params.mBaseWidth = baseWidth;
-            params.mDefaultKeyWidth = (int)keyAttr.getFraction(R.styleable.Keyboard_Key_keyWidth,
+            params.mDefaultKeyWidth = (int)keyAttr.getFraction(R.styleable.Keyboard_Key_ZQYkeyWidth,
                     baseWidth, baseWidth, baseWidth / DEFAULT_KEYBOARD_COLUMNS);
             params.mHorizontalGap = (int)keyboardAttr.getFraction(
                     R.styleable.Keyboard_horizontalGap, baseWidth, baseWidth, 0);
